@@ -24,7 +24,7 @@ function AddApoinment() {
                 </label>
             <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input 
-                className=" mx-auto my-0 h-7 max-w-lg block w-full shadow-md focus:ring-indigo-500 focus:border-indigo-500 sm-max-w-xs sm:text-sm border-gray-700 rounded-md"
+                className=" my-0 h-7 max-w-lg block w-full shadow-md focus:ring-indigo-500 focus:border-indigo-500 sm-max-w-xs sm:text-sm border-gray-700 rounded-md"
                 type="text" 
                 name="ownerName" 
                 id="ownerName"

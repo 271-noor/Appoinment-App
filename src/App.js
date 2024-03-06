@@ -3,7 +3,6 @@
 import { BiArchive } from 'react-icons/bi'
 import Search from './components/Search'
 import AddApoinment from './components/AddApoinment'
-// import appoinmentList from './data.json'
 import AppoinmentInfo from './components/AppoinmentInfo'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -12,14 +11,23 @@ function App() {
 
   let [appoinmentList, setAppoinmentList] = useState([])
   let [query, setQuery] = useState("")
+  let [sortBy, setSortBy] = useState("petName")
+  let[orderBy, setOrderBy] = useState("asc")
 
   const filteredAppoinmentList = appoinmentList.filter((item) => {
-    return item.petNam
-    .toLowerCase()
-    .include(
-      query.toLowerCase() || 
-        item.ownerName.toLowerCase().include(query.toLowerCase()) )
+    return(
+    item.petName.toLowerCase().includes(query.toLowerCase()) || 
+    item.ownerName.toLowerCase().includes(query.toLowerCase())
+    )
+
+  }).sort((a,b) => {
+    let order = (orderBy === 'asc') ? 1 : -1
+    return a[sortBy].toLowerCase() < b[sortBy].toLowerCase()
+    ? -1 * order 
+    : 1 * order
   })
+
+
   const fetchData = useCallback(() => {
     fetch('./data.json')
     .then((response) => response.json())
@@ -39,10 +47,15 @@ function App() {
   Appoinment App
 </h1>
   <AddApoinment />
-  <Search query = {query} onQueryChange={(myQuery) => setQuery(myQuery)}/>
+  <Search query = {query} onQueryChange={(myQuery) => setQuery(myQuery)}
+   orderBy = {orderBy}
+   onorderByChange = {mySort => setOrderBy(mySort)}
+   sortBy = {sortBy}
+   onSortByChange = {(mySort) => setSortBy(mySort)}
+   />
  
   <ul className="divide-y divide-gray-200">
-    {appoinmentList.map((appoinment) => ( 
+    {filteredAppoinmentList.map((appoinment) => ( 
         < AppoinmentInfo key={appoinment.id}
           appoinment={appoinment}
 
