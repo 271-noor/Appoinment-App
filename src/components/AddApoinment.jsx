@@ -9,7 +9,7 @@ function AddApoinment() {
         onClick={() => {
             setToggleForm(!toggleForm)
         }}
-       className="bg-purple-500 my-3 text-white px-2 py-3 w-full text-left rounded-t-md"
+       className="bg-purple-800 hover:bg-purple-900 my-3 text-white px-2 py-3 w-full text-left rounded-t-md"
        >
         <div>
             <BiCalendarPlus className="inline-block align-text-top " />
@@ -96,7 +96,8 @@ function AddApoinment() {
         <div className="pt-5">
             <div>
                 <button type="submit"
-                 className="ml-3 inline-flex justify-center shadow-lg shadow-purple-500/50 py-2 px-4 border border-transparent text-white bg-purple-500 hover:bg-purple-800 rounded-md ">
+                 className="ml-3 inline-flex justify-center shadow-lg
+                  shadow-purple-500/50 py-2 px-4 border border-transparent text-white bg-purple-500 hover:bg-purple-800 rounded-lg ">
                     Submit
                     </button>
             </div>
