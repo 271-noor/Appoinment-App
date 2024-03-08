@@ -40,13 +40,25 @@ function App() {
     fetchData()
   }, [fetchData])
   return (
-       <div className="App container mx-auto mt-3 font-thin">
+       <div className="App container mx-auto mt-1 font-thin">
 
-<h1 className="text-4xl font-bold">
+<h1 className="text-5xl text-center font-bold text-transparent my-1 bg-clip-text bg-gradient-to-r
+     from-cyan-600 to-gray-900">
+      {/* <img src="./components/r.jpg" alt="" /> */}
   <BiArchive className="inline-block text-red-400 align-top" />
   Appoinment App
 </h1>
-  <AddApoinment />
+
+  <AddApoinment onSendAppoinment={(myAppoinment) =>
+    setAppoinmentList([...appoinmentList, myAppoinment])
+  } 
+    lastId={appoinmentList.reduce(
+      (max, item) => Number(item.id) > max ? Number(item.id) : max,
+      0
+      )}
+     />
+
+
   <Search query = {query} onQueryChange={(myQuery) => setQuery(myQuery)}
    orderBy = {orderBy}
    onorderByChange = {mySort => setOrderBy(mySort)}
